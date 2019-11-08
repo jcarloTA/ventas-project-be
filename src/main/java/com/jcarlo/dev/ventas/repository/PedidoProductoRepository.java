@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.io.Serializable;
 
 public interface PedidoProductoRepository extends JpaRepository<PedidoProducto, Serializable> {
+
+    int deleteByIdProducto(int id);
 }

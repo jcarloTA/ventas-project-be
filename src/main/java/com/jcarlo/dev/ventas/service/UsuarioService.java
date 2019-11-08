@@ -28,4 +28,6 @@ public class UsuarioService {
     public Usuario createUsuario(@RequestBody Usuario noticia) {
         return usuarioRepository.save(noticia);
     }
+
+
 }
