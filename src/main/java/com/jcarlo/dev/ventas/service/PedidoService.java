@@ -5,10 +5,7 @@ import com.jcarlo.dev.ventas.model.PedidoProducto;
 import com.jcarlo.dev.ventas.repository.PedidoProductoRepository;
 import com.jcarlo.dev.ventas.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,11 +17,14 @@ public class PedidoService {
     PedidoRepository pedidoRepository;
     @Autowired
     PedidoProductoRepository pedidoProductoRepository;
+
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Pedido> getAll() {
         return pedidoRepository.findAll();
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Pedido createPedido(@RequestBody Pedido pedido) {
         List<PedidoProducto> detalles = pedido.getDetalles();

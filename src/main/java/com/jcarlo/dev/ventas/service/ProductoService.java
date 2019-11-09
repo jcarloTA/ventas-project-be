@@ -20,19 +20,21 @@ public class ProductoService {
     @Autowired
     PedidoProductoRepository pedidoProductoRepository;
 
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Producto> getAll() {
         return productoRepository.findAll();
     }
 
-
+    @CrossOrigin
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public void deleteProducto(@PathVariable("id") int id) {
+    public List<Producto> deleteProducto(@PathVariable("id") int id) {
         pedidoProductoRepository.deleteByIdProducto(id);
         productoRepository.deleteById(id);
-
+        return productoRepository.findAll();
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Producto createProducto(@RequestBody Producto producto) {
         return productoRepository.save(producto);

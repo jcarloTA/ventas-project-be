@@ -14,16 +14,20 @@ public class NoticiaService {
     @Autowired
     NoticiaRepository noticiaRepository;
 
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Noticia> getAll() {
         return noticiaRepository.findAll();
     }
 
+    @CrossOrigin
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-    public void deleteNoticia(@PathVariable("id") int id) {
+    public List<Noticia> deleteNoticia(@PathVariable("id") int id) {
         noticiaRepository.deleteById(id);
+        return noticiaRepository.findAll();
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Noticia createNoticia(@RequestBody Noticia noticia) {
         return noticiaRepository.save(noticia);

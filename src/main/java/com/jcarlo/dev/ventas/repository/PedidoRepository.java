@@ -7,4 +7,6 @@ import java.io.Serializable;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Serializable> {
 
+    int deleteByIdVendedor(int id);
+
 }
